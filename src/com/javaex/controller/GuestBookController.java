@@ -66,9 +66,6 @@ public class GuestBookController extends HttpServlet {
 			GuestBookDao gDao = new GuestBookDao();
 			GuestBookVo gVo = gDao.getOne(no);
 
-			// 삭제할 데이터(no)를 jsp에 전달
-			request.setAttribute("DeleteList", gVo);
-
 			// jsp forword
 			RequestDispatcher rqD = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");
 			rqD.forward(request, response);

@@ -1,8 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ page import="com.javaex.vo.GuestBookVo"%>
-<%@ page import="com.javaex.dao.GuestBookDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
 <%
 	int no = Integer.parseInt(request.getParameter("no"));
@@ -20,8 +16,8 @@
 
 		비밀번호: <input type="password" name="password">
 		<button type="submit">확인</button>
-		<input type="hidden" name="no" value="<%=no%>"> <input
-			type="hidden" name="action" value="delete">
+		<input type="hidden" name="no" value="<%=no%>"> 
+		<input type="hidden" name="action" value="delete">
 
 	</form>
 
