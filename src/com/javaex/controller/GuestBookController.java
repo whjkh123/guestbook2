@@ -3,7 +3,6 @@ package com.javaex.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javaex.dao.GuestBookDao;
+import com.javaex.util.WebUtil;
 import com.javaex.vo.GuestBookVo;
 
 @WebServlet("/gbc")
@@ -22,7 +22,8 @@ public class GuestBookController extends HttpServlet {
 
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("controller test");
 
 		request.setCharacterEncoding("UTF-8");
@@ -42,8 +43,7 @@ public class GuestBookController extends HttpServlet {
 			request.setAttribute("GuestList", gList);
 
 			// jsp forword
-			RequestDispatcher rqD = request.getRequestDispatcher("./WEB-INF/addlist.jsp");
-			rqD.forward(request, response);
+			WebUtil.forword(request, response, "./WEB-INF/addlist.jsp");
 		} else if ("add".equals(act)) {
 			System.out.println("방문록 등록");
 
@@ -56,13 +56,12 @@ public class GuestBookController extends HttpServlet {
 			GuestBookDao gDao = new GuestBookDao();
 			gDao.dbIsrt(gVo);
 
-			response.sendRedirect("/guestbook2/gbc?action=addlist");
+			WebUtil.redirect(request, response, "/guestbook2/gbc?action=addlist");
 		} else if ("dform".equals(act)) {
 			System.out.println("삭제 폼 출력");
 
 			// jsp forword
-			RequestDispatcher rqD = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");
-			rqD.forward(request, response);
+			WebUtil.forword(request, response, "./WEB-INF/deleteForm.jsp");
 		} else if ("delete".equals(act)) {
 			System.out.println("방문록 삭제");
 
@@ -76,17 +75,17 @@ public class GuestBookController extends HttpServlet {
 			int cnt = gDao.dbDle(gVo);
 
 			if (cnt == 1) {
-				response.sendRedirect("/guestbook2/gbc?action=addlist");
+				WebUtil.redirect(request, response, "/guestbook2/gbc?action=addlist");
 			} else {// 비밀번호를 틀렸을 경우 (cnt == 0)
 				// jsp forword
-				RequestDispatcher rqD = request.getRequestDispatcher("./WEB-INF/passworderror.jsp");
-				rqD.forward(request, response);
+				WebUtil.forword(request, response, "./WEB-INF/passworderror.jsp");
 			}
 		}
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
