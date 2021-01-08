@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
 <%@ page import="com.javaex.vo.GuestBookVo"%>
 
@@ -15,7 +14,7 @@
 </head>
 <body>
 
-	<form action="/guestbook2/gbc" method="get">
+	<form action="/guestbook2/gbc" method="post">
 
 		비밀번호: <input type="password" name="password">
 		<button type="submit">확인</button>
