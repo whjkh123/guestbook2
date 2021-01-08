@@ -22,8 +22,7 @@ public class GuestBookController extends HttpServlet {
 
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("controller test");
 
 		request.setCharacterEncoding("UTF-8");
@@ -34,8 +33,6 @@ public class GuestBookController extends HttpServlet {
 
 		if ("addlist".equals(act)) {
 			System.out.println("리스트 출력");
-
-			request.setCharacterEncoding("UTF-8");
 
 			// 리스트 출력
 			GuestBookDao gDao = new GuestBookDao();
@@ -50,8 +47,6 @@ public class GuestBookController extends HttpServlet {
 		} else if ("add".equals(act)) {
 			System.out.println("방문록 등록");
 
-			request.setCharacterEncoding("UTF-8");
-
 			// GuestBookVo 데이터 로드
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
@@ -64,8 +59,6 @@ public class GuestBookController extends HttpServlet {
 			response.sendRedirect("/guestbook2/gbc?action=addlist");
 		} else if ("dform".equals(act)) {
 			System.out.println("삭제 폼 출력");
-
-			request.setCharacterEncoding("UTF-8");
 
 			// GuestBookVo 데이터 로드
 			int no = Integer.parseInt(request.getParameter("no"));
@@ -82,8 +75,6 @@ public class GuestBookController extends HttpServlet {
 		} else if ("delete".equals(act)) {
 			System.out.println("방문록 삭제");
 
-			request.setCharacterEncoding("UTF-8");
-
 			// GuestBookVo 데이터 로드
 			int no = Integer.parseInt(request.getParameter("no"));
 			String password = request.getParameter("password");
@@ -96,7 +87,7 @@ public class GuestBookController extends HttpServlet {
 			if (cnt == 1) {
 				response.sendRedirect("/guestbook2/gbc?action=addlist");
 			} else {// 비밀번호를 틀렸을 경우 (cnt == 0)
-					// jsp forword
+				// jsp forword
 				RequestDispatcher rqD = request.getRequestDispatcher("./WEB-INF/passworderror.jsp");
 				rqD.forward(request, response);
 			}
@@ -104,8 +95,7 @@ public class GuestBookController extends HttpServlet {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 
