@@ -25,7 +25,5 @@
 
 	<a href="/guestbook2/gbc?action=addlist">메인으로 돌악가기</a>
 
-	</form>
-
 </body>
 </html>
