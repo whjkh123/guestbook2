@@ -22,8 +22,7 @@ public class GuestBookController extends HttpServlet {
 
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("controller test");
 
 		request.setCharacterEncoding("UTF-8");
@@ -61,8 +60,6 @@ public class GuestBookController extends HttpServlet {
 		} else if ("dform".equals(act)) {
 			System.out.println("삭제 폼 출력");
 
-			// GuestBookVo 데이터 로드
-
 			// jsp forword
 			RequestDispatcher rqD = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");
 			rqD.forward(request, response);
@@ -89,8 +86,7 @@ public class GuestBookController extends HttpServlet {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 
