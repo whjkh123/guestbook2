@@ -80,6 +80,18 @@ public class GuestBookController extends HttpServlet {
 				// jsp forword
 				WebUtil.forword(request, response, "./WEB-INF/passworderror.jsp");
 			}
+		} else {
+			System.out.println("리스트 출력");
+
+			// 리스트 출력
+			GuestBookDao gDao = new GuestBookDao();
+			List<GuestBookVo> gList = gDao.dbList();
+
+			// 리스트 데이터를 jsp에 전달
+			request.setAttribute("GuestList", gList);
+
+			// jsp forword
+			WebUtil.forword(request, response, "./WEB-INF/addlist.jsp");
 		}
 
 	}
